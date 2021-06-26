@@ -10,7 +10,7 @@ public class Main {
     list.addLast(30);
     list.addLast(40);
     // list.addFirst(2);
-    System.out.println(list.indexOf(200));
+    System.out.println(list.contains(40));
     list.show();
   }
 }

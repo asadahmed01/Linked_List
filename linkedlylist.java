@@ -61,6 +61,10 @@ public class linkedlylist {
     return -1;
   }
 
+  public boolean contains(int item) {
+    return indexOf(item) != -1;
+  }
+
   public void show() {
     Node current = Head;
     while (current.Next != null) {
