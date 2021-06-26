@@ -3,6 +3,10 @@ public class linkedlylist {
   private class Node {
     private int Data;
     private Node Next;
+
+    public Node(int value) {
+      this.Data = value;
+    }
   }
 
   private Node Head;
@@ -10,8 +14,8 @@ public class linkedlylist {
 
   public void addFirst(int d) {
     // create new node
-    var node = new Node();
-    node.Data = d;
+    var node = new Node(d);
+
     // if there is no nodes already in the list
     if (Head == null) {
       // point the head to the new node
@@ -33,17 +37,28 @@ public class linkedlylist {
   // addLast Method
   public void addLast(int data) {
     // creae new node
-    var node = new Node();
-    node.Data = data;
+    var node = new Node(data);
 
-    Node current = Head;
+    if (Head == null)
+      Head = Tail = node;
 
-    while (current.Next != null) {
-
-      current = current.Next;
+    else {
+      Tail.Next = node;
+      Tail = node;
     }
-    current.Next = node;
-    Tail = node;
+  }
+
+  public int indexOf(int item) {
+    Node current = Head;
+    int index = 0;
+    while (current != null) {
+      if (current.Data == item)
+        return index;
+      current = current.Next;
+      index++;
+    }
+
+    return -1;
   }
 
   public void show() {
