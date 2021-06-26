@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Main {
@@ -7,8 +8,9 @@ public class Main {
     list.addLast(50);
     list.addLast(60);
     list.addLast(70);
-    // list.removeFirst();
-    System.out.println(Arrays.toString(list.toArray()));
+    list.show();
+    list.reverse();
+    // System.out.println(Arrays.toString(list.toArray()));
     list.show();
   }
 }

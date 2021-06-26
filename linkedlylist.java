@@ -132,6 +132,19 @@ public class linkedlylist {
     return array;
   }
 
+  // reverse method
+  public void reverse() {
+    Node prev = null;
+    Node current = Head;
+    while (Head != null) {
+      var temp = Head;
+      Head = Head.Next;
+      temp.Next = prev;
+      prev = temp;
+    }
+    Head = prev;
+  }
+
   // Display method
   public void show() {
     Node current = Head;
