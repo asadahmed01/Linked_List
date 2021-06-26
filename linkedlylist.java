@@ -134,8 +134,9 @@ public class linkedlylist {
 
   // reverse method
   public void reverse() {
+    if (Head == null)
+      return;
     Node prev = null;
-    Node current = Head;
     while (Head != null) {
       var temp = Head;
       Head = Head.Next;
@@ -143,6 +144,20 @@ public class linkedlylist {
       prev = temp;
     }
     Head = prev;
+  }
+
+  public int getKthFromEnd(int k) {
+    // Node firstNode = Head;
+    Node firstNode = Head;
+    Node secondNode = Head;
+    for (int i = 0; i < k - 1; i++) {
+      secondNode = secondNode.Next;
+    }
+    while (secondNode != Tail) {
+      secondNode = secondNode.Next;
+      firstNode = firstNode.Next;
+    }
+    return firstNode.Data;
   }
 
   // Display method
