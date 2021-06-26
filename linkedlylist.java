@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 public class linkedlylist {
 
   private class Node {
@@ -48,6 +50,7 @@ public class linkedlylist {
     }
   }
 
+  // indexOf method
   public int indexOf(int item) {
     Node current = Head;
     int index = 0;
@@ -61,12 +64,57 @@ public class linkedlylist {
     return -1;
   }
 
+  // Contains method
   public boolean contains(int item) {
     return indexOf(item) != -1;
   }
 
+  // RemoveFirst method
+  public void removeFirst() {
+    if (Head == null)
+      throw new NoSuchElementException("List is empty.");
+
+    // if the list contains only 1 item
+    if (Head == Tail) {
+      Head = Tail = null;
+      return;
+    }
+    // get hold of the second item
+    Node current = Head.Next;
+    // remove the link between the first and the second
+    Head.Next = null;
+    // make the head point to the second item which is the first item now
+    Head = current;
+
+  }
+
+  // removeLast
+  public void removeLast() {
+
+    if (Head == null)
+      throw new NoSuchElementException("List is empty.");
+
+    // if the list contains only 1 item
+    if (Head == Tail) {
+      Head = Tail = null;
+      return;
+    }
+    Node secondlast = Head;
+    while (secondlast.Next.Next != null) {
+      secondlast = secondlast.Next;
+
+    }
+
+    Tail = secondlast;
+    secondlast.Next = null;
+
+  }
+
+  // Display method
   public void show() {
     Node current = Head;
+    if (Head == null)
+      throw new NoSuchElementException("List is empty.");
     while (current.Next != null) {
       System.out.print(current.Data + " -> ");
       current = current.Next;

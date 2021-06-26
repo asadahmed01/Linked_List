@@ -9,8 +9,8 @@ public class Main {
     list.addLast(20);
     list.addLast(30);
     list.addLast(40);
-    // list.addFirst(2);
-    System.out.println(list.contains(40));
+    list.addLast(50);
+    list.removeLast();
     list.show();
   }
 }
