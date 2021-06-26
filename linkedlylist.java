@@ -13,6 +13,7 @@ public class linkedlylist {
 
   private Node Head;
   private Node Tail;
+  private int size;
 
   public void addFirst(int d) {
     // create new node
@@ -24,6 +25,7 @@ public class linkedlylist {
       Head = node;
       // point the tail to the new node
       Tail = node;
+
     }
 
     else {
@@ -33,7 +35,7 @@ public class linkedlylist {
       // then move the head to point to the newly created node
       Head = node;
     }
-
+    size++;
   }
 
   // addLast Method
@@ -48,6 +50,7 @@ public class linkedlylist {
       Tail.Next = node;
       Tail = node;
     }
+    size++;
   }
 
   // indexOf method
@@ -77,6 +80,7 @@ public class linkedlylist {
     // if the list contains only 1 item
     if (Head == Tail) {
       Head = Tail = null;
+      size = 0;
       return;
     }
     // get hold of the second item
@@ -85,7 +89,7 @@ public class linkedlylist {
     Head.Next = null;
     // make the head point to the second item which is the first item now
     Head = current;
-
+    size--;
   }
 
   // removeLast
@@ -97,17 +101,35 @@ public class linkedlylist {
     // if the list contains only 1 item
     if (Head == Tail) {
       Head = Tail = null;
+      size = 0;
       return;
     }
     Node secondlast = Head;
     while (secondlast.Next.Next != null) {
       secondlast = secondlast.Next;
-
     }
-
     Tail = secondlast;
     secondlast.Next = null;
+    size--;
+  }
 
+  // sizeOf method
+  public int size() {
+    return size;
+  }
+
+  // convert the linkedlist to array
+
+  public int[] toArray() {
+    int[] array = new int[size];
+    int index = 0;
+    Node current = Head;
+    while (current != null) {
+      array[index] = current.Data;
+      index++;
+      current = current.Next;
+    }
+    return array;
   }
 
   // Display method
