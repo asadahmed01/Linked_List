@@ -147,17 +147,38 @@ public class linkedlylist {
   }
 
   public int getKthFromEnd(int k) {
-    // Node firstNode = Head;
+    if (Head == null)
+      throw new IllegalStateException();
     Node firstNode = Head;
     Node secondNode = Head;
     for (int i = 0; i < k - 1; i++) {
       secondNode = secondNode.Next;
+      if (secondNode.Next == null)
+        throw new IllegalArgumentException();
     }
     while (secondNode != Tail) {
       secondNode = secondNode.Next;
       firstNode = firstNode.Next;
     }
     return firstNode.Data;
+  }
+
+  // find the middle node with one pass
+  public void findMiddleNode() {
+    Node fastPtr = Head;
+    Node slowPtr = Head;
+
+    while (fastPtr != Tail && fastPtr.Next != Tail) {
+
+      fastPtr = fastPtr.Next.Next;
+      slowPtr = slowPtr.Next;
+
+    }
+    if (fastPtr == Tail)
+      System.out.println(slowPtr.Data);
+    else
+      System.out.println(slowPtr.Data + " , " + slowPtr.Next.Data);
+
   }
 
   // Display method
