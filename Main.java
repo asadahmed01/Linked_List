@@ -14,7 +14,8 @@ public class Main {
 
     // list.show();
     // list.reverse();
-    list.findMiddleNode();
+    // list.findMiddleNode();
+    System.out.println(list.hasLoop());
     list.show();
   }
 }

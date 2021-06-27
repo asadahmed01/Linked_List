@@ -167,7 +167,8 @@ public class linkedlylist {
   public void findMiddleNode() {
     Node fastPtr = Head;
     Node slowPtr = Head;
-
+    if (Head == null)
+      throw new IllegalStateException("List is empty.");
     while (fastPtr != Tail && fastPtr.Next != Tail) {
 
       fastPtr = fastPtr.Next.Next;
@@ -179,6 +180,24 @@ public class linkedlylist {
     else
       System.out.println(slowPtr.Data + " , " + slowPtr.Next.Data);
 
+  }
+
+  // Has loop
+  public boolean hasLoop() {
+    Node fastPtr = Head;
+    Node slowPtr = Head;
+    boolean isLoop = false;
+    while (fastPtr != Tail) {
+
+      fastPtr = fastPtr.Next.Next;
+      slowPtr = slowPtr.Next;
+      if (fastPtr == slowPtr) {
+        isLoop = true;
+        break;
+      }
+
+    }
+    return isLoop;
   }
 
   // Display method
